@@ -2,6 +2,10 @@
   "name": "socialties-monorepo",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": "22.x",
+    "npm": ">=10"
+  },
   "scripts": {
     "dev": "concurrently \"npm run dev --workspace=backend\" \"npm run dev --workspace=frontend\"",
     "build:backend": "npm run build --workspace=backend",

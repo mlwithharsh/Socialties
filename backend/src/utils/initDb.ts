@@ -43,13 +43,14 @@ export async function initializeSettings() {
     });
 
     // 2. Default Admin User
-    const adminEmail = process.env.ADMIN_EMAIL || "admin@socialties.in";
+    const adminEmail = (process.env.ADMIN_EMAIL || "admin@socialties.in").trim().toLowerCase();
     const passwordHash = process.env.ADMIN_PASSWORD_HASH || await bcrypt.hash("admin123", 12);
     await db.user.upsert({
       where: { email: adminEmail },
       update: {
         roleId: superAdminRole.id,
         isActive: true,
+        passwordHash,
       },
       create: {
         name: "Super Admin",

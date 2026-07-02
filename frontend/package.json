@@ -2,6 +2,10 @@
   "name": "socialties-app",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "22.x",
+    "npm": ">=10"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -23,6 +27,7 @@
     "zod": "^4.4.3"
   },
   "optionalDependencies": {
+    "@tailwindcss/oxide-linux-x64-gnu": "4.3.2",
     "lightningcss-linux-x64-gnu": "1.32.0"
   },
   "devDependencies": {

@@ -134,7 +134,7 @@ export async function initializeSettings() {
           phone: "+91 98765 43210",
           whatsapp: "+919876543210",
           workingHours: "Mon - Sat: 10:00 AM - 7:00 PM",
-          googleMapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3498.4239855845943!2d77.1706692!3d28.7128522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d024623bb410b%3A0xc4802c6cdfb3246a!2sAzadpur%2C%20Delhi!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin",
+          googleMapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3498.4239855845943!2d77.1706692!3d28.7128522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d024623bb4[...]",
           instagram: "https://instagram.com/socialties",
           linkedin: "https://linkedin.com/company/socialties",
           youtube: "https://youtube.com/@socialties"
@@ -209,11 +209,11 @@ export async function initializeSettings() {
 
     // 9. SEO Settings
     const defaultSeoPages = [
-      { pagePath: "/", title: "Socialties | Leading Influencer Marketing Agency India", description: "Grow your brand with Socialties, India's premier influencer marketing and digital creative agency. Strategy meets storytelling." },
-      { pagePath: "/campaigns", title: "Our Campaigns | Socialties Case Studies", description: "Explore how Socialties drives real ROI for top brands. Check out our influencer marketing and advertising case studies." },
+      { pagePath: "/", title: "Socialties | Leading Influencer Marketing Agency India", description: "Grow your brand with Socialties, India's premier influencer marketing and digital creative ag[...]"},
+      { pagePath: "/campaigns", title: "Our Campaigns | Socialties Case Studies", description: "Explore how Socialties drives real ROI for top brands. Check out our influencer marketing and adver[...]"},
       { pagePath: "/team", title: "Meet the Team | Socialties", description: "Meet the strategists, creators, and developers behind Socialties. Our people make influence happen." },
-      { pagePath: "/creators", title: "For Creators | Join Socialties Network", description: "Are you a creator? Monetize your audience, land premium brand campaigns, and grow with Socialties representation." },
-      { pagePath: "/brands", title: "For Brands | Launch Campaigns with Socialties", description: "Scale your customer acquisition. Partner with Socialties to build end-to-end influencer marketing campaigns." },
+      { pagePath: "/creators", title: "For Creators | Join Socialties Network", description: "Are you a creator? Monetize your audience, land premium brand campaigns, and grow with Socialties rep[...]"},
+      { pagePath: "/brands", title: "For Brands | Launch Campaigns with Socialties", description: "Scale your customer acquisition. Partner with Socialties to build end-to-end influencer marketin[...]"},
       { pagePath: "/contact", title: "Contact Us | Socialties Delhi Office", description: "Get in touch with Socialties. Start your campaign today. Located in Azadpur, New Delhi." }
     ];
 

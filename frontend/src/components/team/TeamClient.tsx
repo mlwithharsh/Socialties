@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Linkedin, Instagram, Mail, X } from "lucide-react";
+import { Linkedin, Instagram, Mail, Phone, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface TeamMember {
@@ -12,6 +12,7 @@ interface TeamMember {
   linkedin: string | null;
   instagram: string | null;
   email: string | null;
+  phone: string | null;
   bio: string | null;
 }
 
@@ -79,12 +80,12 @@ export default function TeamClient({ members }: TeamClientProps) {
       {/* Detail Modal Dialog */}
       <AnimatePresence>
         {selectedMember && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/60 backdrop-blur-sm">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-bg-elevated border border-border max-w-lg w-full rounded-3xl p-6 sm:p-8 relative shadow-2xl space-y-6"
+              className="bg-bg-elevated border border-border max-w-2xl w-full rounded-3xl p-6 sm:p-8 relative shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto"
             >
               {/* Close Button */}
               <button
@@ -112,7 +113,7 @@ export default function TeamClient({ members }: TeamClientProps) {
                   )}
                 </div>
 
-                <div className="space-y-3 text-center sm:text-left">
+                <div className="space-y-3 text-center sm:text-left min-w-0 flex-1">
                   <div>
                     <h3 className="font-extrabold text-2xl text-foreground">
                       {selectedMember.name}
@@ -120,6 +121,28 @@ export default function TeamClient({ members }: TeamClientProps) {
                     <p className="text-sm text-brand-lime uppercase tracking-wider font-bold">
                       {selectedMember.designation}
                     </p>
+                  </div>
+
+                  {/* Contact details — readable text with wrap */}
+                  <div className="space-y-1.5">
+                    {selectedMember.email && (
+                      <a
+                        href={`mailto:${selectedMember.email}`}
+                        className="flex items-center justify-center sm:justify-start gap-2 text-sm text-fg-muted hover:text-brand-lime transition-colors group/email"
+                      >
+                        <Mail size={14} className="shrink-0 text-brand-lime" />
+                        <span className="break-all">{selectedMember.email}</span>
+                      </a>
+                    )}
+                    {selectedMember.phone && (
+                      <a
+                        href={`tel:${selectedMember.phone.replace(/\s/g, "")}`}
+                        className="flex items-center justify-center sm:justify-start gap-2 text-sm text-fg-muted hover:text-brand-lime transition-colors"
+                      >
+                        <Phone size={14} className="shrink-0 text-brand-lime" />
+                        <span>{selectedMember.phone}</span>
+                      </a>
+                    )}
                   </div>
 
                   {/* Social links */}
@@ -130,6 +153,7 @@ export default function TeamClient({ members }: TeamClientProps) {
                         target="_blank"
                         rel="noreferrer"
                         className="hover:text-brand-lime transition-colors"
+                        aria-label="LinkedIn"
                       >
                         <Linkedin size={18} />
                       </a>
@@ -140,16 +164,9 @@ export default function TeamClient({ members }: TeamClientProps) {
                         target="_blank"
                         rel="noreferrer"
                         className="hover:text-brand-lime transition-colors"
+                        aria-label="Instagram"
                       >
                         <Instagram size={18} />
-                      </a>
-                    )}
-                    {selectedMember.email && (
-                      <a
-                        href={`mailto:${selectedMember.email}`}
-                        className="hover:text-brand-lime transition-colors"
-                      >
-                        <Mail size={18} />
                       </a>
                     )}
                   </div>

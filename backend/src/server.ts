@@ -29,7 +29,7 @@ const app = express();
 const port = process.env.PORT || process.env.BACKEND_PORT || 4000;
 
 const allowedOrigins = process.env.ALLOWED_ORIGINS
-  ? process.env.ALLOWED_ORIGINS.split(",").map((o) => o.trim())
+  ? process.env.ALLOWED_ORIGINS.split(",").map((o) => o.trim().replace(/\/$/, ""))
   : ["http://localhost:3000", "http://127.0.0.1:3000"];
 
 app.use(
@@ -37,7 +37,8 @@ app.use(
     origin: (origin, callback) => {
       // Allow requests with no origin (curl, mobile apps, server-to-server)
       if (!origin) return callback(null, true);
-      if (allowedOrigins.includes("*") || allowedOrigins.includes(origin)) {
+      const cleanOrigin = origin.trim().replace(/\/$/, "");
+      if (allowedOrigins.includes("*") || allowedOrigins.includes(cleanOrigin)) {
         return callback(null, true);
       }
       return callback(new Error(`CORS: origin ${origin} not allowed`));

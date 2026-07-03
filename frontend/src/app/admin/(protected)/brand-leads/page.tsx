@@ -1,13 +1,20 @@
 import BrandLeadsClient from "@/components/admin/BrandLeadsClient";
+import { auth } from "@/auth";
 
 export const revalidate = 0; // Dynamic brand leads dashboard
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
 
 export default async function AdminBrandLeadsPage() {
+  const session = await auth();
+  const token = (session?.user as any)?.accessToken;
+
   let leads = [];
   try {
-    const res = await fetch(`${API_BASE}/api/brand-leads`, { cache: "no-store" });
+    const res = await fetch(`${API_BASE}/api/brand-leads`, {
+      cache: "no-store",
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+    });
     if (res.ok) leads = await res.json();
   } catch {
     // render with empty list on failure
